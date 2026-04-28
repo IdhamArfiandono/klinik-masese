@@ -91,6 +91,19 @@
                 <p class="text-green-600 text-sm font-medium mt-1">{{ $doctor->specialization }}</p>
                 <p class="text-gray-400 text-xs mt-1">{{ $doctor->experience_years }} tahun pengalaman</p>
                 <p class="text-gray-700 text-sm font-medium mt-3">Rp {{ number_format($doctor->consultation_fee, 0, ',', '.') }}</p>
+                @if($doctor->schedule)
+                <div class="mt-4 border-t border-gray-100 pt-4 text-left">
+                    <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Jadwal Praktek</p>
+                    <div class="space-y-1">
+                        @foreach($doctor->schedule as $hari => $jam)
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="capitalize text-gray-600 font-medium">{{ $hari }}</span>
+                            <span class="text-gray-500">{{ $jam[0] }} – {{ $jam[array_key_last($jam)] }}</span>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+                @endif
             </div>
             @endforeach
         </div>

@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 // Public Routes
 Route::get('/', [PublicController::class, 'index'])->name('home');
 Route::get('/dokter', [PublicController::class, 'doctors'])->name('public.doctors');
+Route::get('/dokter/{doctor}', [PublicController::class, 'doctorDetail'])->name('public.doctor.detail');
 
 // Auth Routes (Breeze)
 require __DIR__.'/auth.php';
